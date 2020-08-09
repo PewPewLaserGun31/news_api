@@ -1,15 +1,13 @@
 import os
-import dj_database_url
 from pathlib import Path
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
-SECRET_KEY = os.environ.get("SECRET_KEY", default="knrfpqmpdskkwefk")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "developstodaytest.herokuapp.com"]
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -55,22 +53,14 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get(
-            "DB_DATABASE_NAME", os.path.join(BASE_DIR, "db.sqlite3")
-        ),
-        "USER": os.environ.get("DB_USERNAME", "user"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
-        "HOST": os.environ.get("DB_HOST", "localhost"),
-        "PORT": os.environ.get("DB_PORT", "5432"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
-
-import dj_database_url
-
-db_from_env = dj_database_url.config()
-DATABASES["default"].update(db_from_env)
-DATABASES["default"]["CONN_MAX_AGE"] = 500
 
 AUTH_PASSWORD_VALIDATORS = [
     {
