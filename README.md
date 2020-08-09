@@ -14,3 +14,5 @@ DevelopsToday test task api
 
 # link to heroku
 https://developstodaytest.herokuapp.com/api/
+
+It's my first time using docker, so I ask you not to judge strictly :sweat_smile:
