@@ -1,5 +1,5 @@
 # news_api
-test task api
+DevelopsToday test task api
 
 # how to run api on localhost
   - install docker and docker-compose and run it
