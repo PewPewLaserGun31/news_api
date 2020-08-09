@@ -11,3 +11,6 @@ test task api
   - to get comments or create a new one go to "http://localhost:8000/api/comments/"
   - to upvote the post go to "http://localhost:8000/api/news/<post_id>/upvote"
   - you also can navigate through api via hyperlinks
+
+# link to heroku
+https://developstodaytest.herokuapp.com/api/
